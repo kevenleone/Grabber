@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Divider } from 'react-native-elements';
 import {
@@ -14,6 +14,8 @@ export default class index extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+    const { title, city, detail: { job, contract, salary } } = navigation.state.params;
     return (
       <Container>
         <Content>
@@ -23,8 +25,8 @@ export default class index extends Component {
             size={30}
           />
           <HeaderArea>
-            <Title>Telesales Straight </Title>
-            <Subtitle>Monster UK </Subtitle>
+            <Title>{job}</Title>
+            <Subtitle>{city}</Subtitle>
             <LabelArea>
               <Label>1d Ago</Label>
               <Label>1d Ago</Label>
@@ -35,12 +37,12 @@ export default class index extends Component {
         <Content>
           <QeA>
             <Question>Type</Question>
-            <Answer>Full-Time</Answer>
+            <Answer>{contract || 'Não Especificado'}</Answer>
           </QeA>
           <Divider />
           <QeA>
             <Question>Salary</Question>
-            <Answer>R$ 4000 ~ R$ 8000</Answer>
+            <Answer>{salary}</Answer>
           </QeA>
         </Content>
 

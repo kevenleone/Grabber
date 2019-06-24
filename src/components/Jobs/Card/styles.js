@@ -35,8 +35,8 @@ const JobContainer = styled.View`
 `;
 
 const JobTitle = styled.Text`
-    padding: 10px;
-    font-size: 18px;
+    margin-top: 10px;
+    font-size: 16px;
     text-align: center;
     font-weight: bold;
 `;

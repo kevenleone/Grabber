@@ -26,64 +26,82 @@ export default class index extends Component {
 
   render() {
     const { favorite } = this.state;
+    const { navigate } = this.props.navigation;
+    const { Jobs = [] } = this.props.jobs;
     return (
-      <JobContainer>
-        <Icon
-          name={favorite ? 'ios-heart' : 'ios-heart-empty'}
-          style={styles.IconFavorite}
-          onPress={this.handleFavorite}
-          size={30}
-        />
-        <JobTitle>Engenheiro Ambiental</JobTitle>
-        <JobSubtitle>Recife/PE</JobSubtitle>
-        <Divider style={styles.Divider} />
-        <JobDetails>
-          <JobQA>
+      Jobs.map((Job, indx) => {
+        const {
+          city,
+          date,
+          company: {
+            name, logo,
+          },
+          job: {
+            job, salary, contract, career,
+          },
+        } = Job;
+        const key = indx;
+        return (
+          <JobContainer key={key}>
             <Icon
-              name="ios-paper"
-              style={styles.JobDetailIcon}
-              size={20}
+              name={favorite ? 'ios-heart' : 'ios-heart-empty'}
+              style={styles.IconFavorite}
+              onPress={this.handleFavorite}
+              size={30}
             />
-            <JobQuestion>
+            <JobTitle>{job}</JobTitle>
+            <JobSubtitle>{city}</JobSubtitle>
+            <Divider style={styles.Divider} />
+            <JobDetails>
+              <JobQA>
+                <Icon
+                  name="ios-paper"
+                  style={styles.JobDetailIcon}
+                  size={20}
+                />
+                <JobQuestion>
                 Contrato
-            </JobQuestion>
-            <JobAnswer>Efetivo (CLT)</JobAnswer>
-          </JobQA>
-          <JobQA>
-            <Icon
-              name="ios-cash"
-              style={styles.JobDetailIcon}
-              size={20}
+                </JobQuestion>
+                <JobAnswer>{contract || 'Não Informado'}</JobAnswer>
+              </JobQA>
+              <JobQA>
+                <Icon
+                  name="ios-cash"
+                  style={styles.JobDetailIcon}
+                  size={20}
+                />
+                <JobQuestion>Salário</JobQuestion>
+                <JobAnswer>{salary}</JobAnswer>
+              </JobQA>
+              <JobQA>
+                <FontAwesome
+                  name="building"
+                  style={styles.JobDetailIcon}
+                  size={20}
+                />
+                <JobQuestion>Empresa</JobQuestion>
+                <JobAnswer>{name}</JobAnswer>
+              </JobQA>
+              <JobQA>
+                <FontAwesome
+                  name="calendar"
+                  style={styles.JobDetailIcon}
+                  size={20}
+                />
+                <JobQuestion>Data Pub</JobQuestion>
+                <JobAnswer>{date}</JobAnswer>
+              </JobQA>
+            </JobDetails>
+            <Divider />
+            <Button
+              type="clear"
+              title="Exibir Detalhes"
+              onPress={() => navigate('Job', Job)}
             />
-            <JobQuestion>Salário</JobQuestion>
-            <JobAnswer>4000</JobAnswer>
-          </JobQA>
-          <JobQA>
-            <FontAwesome
-              name="building"
-              style={styles.JobDetailIcon}
-              size={20}
-            />
-            <JobQuestion>Empresa</JobQuestion>
-            <JobAnswer>Não Especificado</JobAnswer>
-          </JobQA>
-          <JobQA>
-            <FontAwesome
-              name="calendar"
-              style={styles.JobDetailIcon}
-              size={20}
-            />
-            <JobQuestion>Data Pub</JobQuestion>
-            <JobAnswer>{new Date().toUTCString()}</JobAnswer>
-          </JobQA>
-        </JobDetails>
-        <Divider />
-        <Button
-          type="clear"
-          title="Exibir Detalhes"
-          onPress={() => this.props.navigation.navigate('Job')}
-        />
-      </JobContainer>
+          </JobContainer>
+        );
+      })
+
     );
   }
 }

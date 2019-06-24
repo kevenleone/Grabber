@@ -9,6 +9,12 @@ import Settings from '~/pages/Settings';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const TabNavigator = createBottomTabNavigator({
+  Settings: {
+    screen: Settings,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => <Icon name="gears" size={25} color={tintColor} />,
+    },
+  },
   Jobs: {
     screen: Jobs,
     navigationOptions: {
@@ -21,12 +27,7 @@ const TabNavigator = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="home" size={25} color={tintColor} />,
     },
   },
-  Settings: {
-    screen: Settings,
-    navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Icon name="gears" size={25} color={tintColor} />,
-    },
-  },
+
 }, {
   navigationOptions: ({ navigation }) => {
     const { routeName } = navigation.state.routes[navigation.state.index];
@@ -43,7 +44,7 @@ const TabNavigator = createBottomTabNavigator({
 });
 
 const StackNavigator = createStackNavigator({
-  Jobs: TabNavigator,
+  Settings: TabNavigator,
   Job: { screen: Job },
 });
 

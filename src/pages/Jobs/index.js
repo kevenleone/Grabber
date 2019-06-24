@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Header } from 'react-native-elements';
-import { Container } from './styles';
 import JobCard from '~/components/Jobs/Card';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { Container } from './styles';
 
-export default class index extends Component {
+class Jobs extends Component {
   constructor() {
     super();
     this.state = {
@@ -28,6 +30,31 @@ export default class index extends Component {
     );
   }
 }
+
+const JobsQuery = gql`
+query{
+  Jobs {
+    title
+    date
+    city
+    company {
+      name
+      logo
+    }
+    job {
+      career
+      job
+      contract
+      apply
+      salary
+    }
+  }
+}
+`;
+
+export default graphql(JobsQuery, {
+  name: 'jobs',
+})(Jobs);
 
 const styles = StyleSheet.create({
   HeaderContainer: {
