@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import {
   ProfileView, Username, Avatar, Job,
 } from './styles';
@@ -8,9 +9,9 @@ export default class index extends Component {
   render() {
     return (
       <ProfileView>
-        <Avatar source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZtZg49eqkFchNquirB_L84ouEJk3G3-e3b6bw0QfWrl0rm6A7zw' }} />
-        <Username> Unknown User  </Username>
-        <Job> Singer </Job>
+        <Avatar source={{ uri: 'https://scontent.frec6-1.fna.fbcdn.net/v/t1.0-9/36786459_1749262405193539_5873717314603450368_n.jpg?_nc_cat=107&_nc_oc=AQmqWSKVmAQyLa2khzI7B-HTrQfqMHyI3W0eQjV4voUpoh3fEOJQburPrTK9o39ofo4&_nc_ht=scontent.frec6-1.fna&oh=bb498b8a539a03f318418e708b1bbf1c&oe=5DC4C230' }} />
+        <Username> Débora Thaíse  </Username>
+        <Job> Cirurgiã Dentista </Job>
       </ProfileView>
     );
   }

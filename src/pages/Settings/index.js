@@ -6,7 +6,7 @@ export default class index extends Component {
   render() {
     return (
       <View>
-        <Card />
+        <Card {...this.props} />
       </View>
     );
   }

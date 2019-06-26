@@ -15,7 +15,7 @@ export default class index extends Component {
 
   render() {
     const { navigation } = this.props;
-    const { title, city, detail: { job, contract, salary } } = navigation.state.params;
+    const { title, city, job: { job, contract, salary } } = navigation.state.params;
     return (
       <Container>
         <Content>

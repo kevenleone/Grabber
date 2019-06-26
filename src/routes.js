@@ -1,20 +1,15 @@
 import {
-  createAppContainer, createBottomTabNavigator, createStackNavigator, createDrawerNavigator,
+  createAppContainer, createBottomTabNavigator, createStackNavigator,
 } from 'react-navigation';
 import React from 'react';
 import Home from '~/pages/Home';
 import Jobs from '~/pages/Jobs';
 import Job from '~/pages/Job';
+import Login from '~/pages/Login';
 import Settings from '~/pages/Settings';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const TabNavigator = createBottomTabNavigator({
-  Settings: {
-    screen: Settings,
-    navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Icon name="gears" size={25} color={tintColor} />,
-    },
-  },
   Jobs: {
     screen: Jobs,
     navigationOptions: {
@@ -27,12 +22,21 @@ const TabNavigator = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="home" size={25} color={tintColor} />,
     },
   },
-
+  Profile: {
+    screen: Settings,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => <Icon name="gears" size={25} color={tintColor} />,
+    },
+  },
 }, {
   navigationOptions: ({ navigation }) => {
     const { routeName } = navigation.state.routes[navigation.state.index];
     return {
       headerTitle: routeName,
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#71B280',
+      },
     };
   },
   animationEnabled: true,
@@ -44,8 +48,12 @@ const TabNavigator = createBottomTabNavigator({
 });
 
 const StackNavigator = createStackNavigator({
-  Settings: TabNavigator,
-  Job: { screen: Job },
+  Login: { screen: Login },
+  Profile: TabNavigator,
+}, {
+  cardStyle: {
+    backgroundColor: '#E8E8E8',
+  },
 });
 
 const Routes = createAppContainer(StackNavigator);
