@@ -5,7 +5,8 @@ import React from 'react';
 import Home from '~/pages/Home';
 import Jobs from '~/pages/Jobs';
 import Job from '~/pages/Job';
-import Login from '~/pages/Login';
+import SignIn from '~/pages/SignIn';
+import SignUp from '~/pages/SignUp';
 import Settings from '~/pages/Settings';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -48,8 +49,9 @@ const TabNavigator = createBottomTabNavigator({
 });
 
 const StackNavigator = createStackNavigator({
-  Login: { screen: Login },
   Profile: TabNavigator,
+  SignIn,
+  SignUp,
 }, {
   cardStyle: {
     backgroundColor: '#E8E8E8',

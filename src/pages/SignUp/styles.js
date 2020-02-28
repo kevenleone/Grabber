@@ -23,6 +23,7 @@ export const SignUpLink = styled.TouchableOpacity`
     margin-top: 20px;
     margin-left: 12px;
     flexDirection: row;
+    align-self: center;
 `;
 
 export const SignUpText = styled.Text`

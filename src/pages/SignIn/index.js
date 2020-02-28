@@ -8,7 +8,12 @@ export default class index extends Component {
       header: null,
     }
 
+    componentDidMount() {
+      console.tron.log('xxxxqweqweq');
+    }
+
     render() {
+      const { navigation: { navigate } } = this.props;
       return (
         <Container>
           <Logo> Grabber </Logo>
@@ -19,7 +24,7 @@ export default class index extends Component {
             <Button>
               <ButtonText> Sign In </ButtonText>
             </Button>
-            <SignUpLink>
+            <SignUpLink onPress={() => navigate('SignUp')}>
               <SimpleText>Don't have an account ?</SimpleText>
               <SignUpText>Click here</SignUpText>
             </SignUpLink>

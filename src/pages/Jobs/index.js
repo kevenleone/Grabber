@@ -32,24 +32,29 @@ class Jobs extends Component {
 }
 
 const JobsQuery = gql`
-query{
-  Jobs {
-    title
-    date
-    city
-    company {
-      name
-      logo
-    }
-    job {
-      career
-      job
-      contract
-      apply
-      salary
+  query {
+    findJobs{
+    pageIndex
+    pageSize
+    maxResults
+    limit
+    Jobs {
+      title
+      company {
+        name
+        location {
+          city
+          state
+        }
+        logo
+        about
+      }
+      job {
+        description
+      }
     }
   }
-}
+  }
 `;
 
 export default graphql(JobsQuery, {
